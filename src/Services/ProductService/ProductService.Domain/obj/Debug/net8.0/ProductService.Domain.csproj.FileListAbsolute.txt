@@ -1,0 +1,11 @@
+D:\MiniCommerce\src\Services\ProductService\ProductService.Domain\bin\Debug\net8.0\ProductService.Domain.deps.json
+D:\MiniCommerce\src\Services\ProductService\ProductService.Domain\bin\Debug\net8.0\ProductService.Domain.dll
+D:\MiniCommerce\src\Services\ProductService\ProductService.Domain\bin\Debug\net8.0\ProductService.Domain.pdb
+D:\MiniCommerce\src\Services\ProductService\ProductService.Domain\obj\Debug\net8.0\ProductService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\MiniCommerce\src\Services\ProductService\ProductService.Domain\obj\Debug\net8.0\ProductService.Domain.AssemblyInfoInputs.cache
+D:\MiniCommerce\src\Services\ProductService\ProductService.Domain\obj\Debug\net8.0\ProductService.Domain.AssemblyInfo.cs
+D:\MiniCommerce\src\Services\ProductService\ProductService.Domain\obj\Debug\net8.0\ProductService.Domain.csproj.CoreCompileInputs.cache
+D:\MiniCommerce\src\Services\ProductService\ProductService.Domain\obj\Debug\net8.0\ProductService.Domain.dll
+D:\MiniCommerce\src\Services\ProductService\ProductService.Domain\obj\Debug\net8.0\refint\ProductService.Domain.dll
+D:\MiniCommerce\src\Services\ProductService\ProductService.Domain\obj\Debug\net8.0\ProductService.Domain.pdb
+D:\MiniCommerce\src\Services\ProductService\ProductService.Domain\obj\Debug\net8.0\ref\ProductService.Domain.dll
