@@ -10,7 +10,7 @@ public class Product
 {
     public Guid Id { get; private set; }
 
-    public string Name { get; private set; }
+    public string Name { get; private set; } = null!;
 
     public string? Description { get; private set; }
 
@@ -22,9 +22,11 @@ public class Product
 
     public DateTime? UpdatedAt { get; private set; }
 
+
     private Product()
     {
     }
+
 
     public Product(
         string name,
@@ -32,11 +34,66 @@ public class Product
         decimal price,
         int stockQuantity)
     {
+        ValidateName(name);
+        ValidatePrice(price);
+        ValidateStockQuantity(stockQuantity);
+
         Id = Guid.NewGuid();
-        Name = name;
-        Description = description;
+        Name = name.Trim();
+        Description = description?.Trim();
         Price = price;
         StockQuantity = stockQuantity;
         CreatedAt = DateTime.UtcNow;
+    }
+
+
+    public void UpdateDetails(
+        string name,
+        string? description,
+        decimal price)
+    {
+        ValidateName(name);
+        ValidatePrice(price);
+
+        Name = name.Trim();
+        Description = description?.Trim();
+        Price = price;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+
+    public void UpdateStock(int quantity)
+    {
+        ValidateStockQuantity(quantity);
+
+        StockQuantity = quantity;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+
+    private static void ValidateName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentException(
+                "Product name is required.",
+                nameof(name));
+    }
+
+
+    private static void ValidatePrice(decimal price)
+    {
+        if (price <= 0)
+            throw new ArgumentOutOfRangeException(
+                nameof(price),
+                "Product price must be greater than zero.");
+    }
+
+
+    private static void ValidateStockQuantity(int quantity)
+    {
+        if (quantity < 0)
+            throw new ArgumentOutOfRangeException(
+                nameof(quantity),
+                "Stock quantity cannot be negative.");
     }
 }
