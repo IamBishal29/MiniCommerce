@@ -97,3 +97,5 @@
 /src/Services/ProductService/ProductService.Infrastructure/obj/Debug/net8.0/ProductService.Infrastructure.csproj.FileListAbsolute.txt
 /src/Services/ProductService/ProductService.Infrastructure/obj/Debug/net8.0/ProductService.Infrastructure.dll
 /src/Services/ProductService/ProductService.Infrastructure/obj/Debug/net8.0/ProductService.Infrastructure.pdb
+# Ignore Visual Studio temporary and cache folders
+.vs/
