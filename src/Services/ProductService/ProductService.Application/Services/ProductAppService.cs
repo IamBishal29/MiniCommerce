@@ -46,6 +46,96 @@ public sealed class ProductAppService
         return MapToDto(product);
     }
 
+    public async Task<IReadOnlyList<ProductDto>> GetAllAsync(
+    CancellationToken cancellationToken = default)
+    {
+        var products =
+            await _productRepository.GetAllAsync(cancellationToken);
+
+        return products
+            .Select(MapToDto)
+            .ToList();
+    }
+
+    public async Task<ProductDto?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        var product =
+            await _productRepository.GetByIdAsync(
+                id,
+                cancellationToken);
+
+        return product is null
+            ? null
+            : MapToDto(product);
+    }
+
+    public async Task<ProductDto?> UpdateAsync(
+    Guid id,
+    UpdateProductRequest request,
+    CancellationToken cancellationToken = default)
+    {
+        var product =
+            await _productRepository.GetByIdAsync(
+                id,
+                cancellationToken);
+
+        if (product is null)
+            return null;
+
+        product.UpdateDetails(
+            request.Name,
+            request.Description,
+            request.Price);
+
+        await _productRepository.UpdateAsync(
+            product,
+            cancellationToken);
+
+        return MapToDto(product);
+    }
+
+    public async Task<ProductDto?> UpdateStockAsync(
+    Guid id,
+    UpdateStockRequest request,
+    CancellationToken cancellationToken = default)
+    {
+        var product =
+            await _productRepository.GetByIdAsync(
+                id,
+                cancellationToken);
+
+        if (product is null)
+            return null;
+
+        product.UpdateStock(request.StockQuantity);
+
+        await _productRepository.UpdateAsync(
+            product,
+            cancellationToken);
+
+        return MapToDto(product);
+    }
+
+    public async Task<bool> DeleteAsync(
+    Guid id,
+    CancellationToken cancellationToken = default)
+    {
+        var product =
+            await _productRepository.GetByIdAsync(
+                id,
+                cancellationToken);
+
+        if (product is null)
+            return false;
+
+        await _productRepository.DeleteAsync(
+            product,
+            cancellationToken);
+
+        return true;
+    }
+
+
     private static ProductDto MapToDto(Product product)
     {
         return new ProductDto(
